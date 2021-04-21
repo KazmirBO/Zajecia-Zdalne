@@ -24,8 +24,8 @@ public:
   void polar_mode();
   void rect_mode();
   // Przeciazanie
-  Vector operator+(const Vector & b) const;
-  Vector operator-(const Vector & b) const;
+  Vector operator+(const Vector &b) const;
+  Vector operator-(const Vector &b) const;
   Vector operator-()const;
   Vector operator*(double n) const;
   friend Vector operator*(double n, Vector &a);
