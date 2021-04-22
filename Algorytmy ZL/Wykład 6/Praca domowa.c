@@ -11,7 +11,7 @@ int main(int argc, char const *argv[]) {
   int l[Wmax-Wmin];
   for(int i=Wmin;i<=Wmax;i++) l[i-Wmin]=0;
   for(int i=0;i<n;i++) l[d[i]-Wmin]++;
-  int j=1;
+  int j=0;
   for(int i=Wmin;i<=Wmax;i++){
     while(l[i-Wmin]--) d[j++]=i;
   }
