@@ -11,9 +11,9 @@ int main(int argc, char const *argv[]) {
   tree.insertNode(9);
   std::cout<<"Wartosci zapisane w drzewie: "<<std::endl;
   tree.displayInOrder();
-  //std::cout<<"Usuwamy '8' i '12' z drzewa."<<std::endl;
-  //tree.remove(8);
-  //tree.remove(12);
+  std::cout<<"Usuwamy '8' i '12' z drzewa."<<std::endl;
+  tree.remove(8);
+  tree.remove(12);
   std::cout<<"Wartosci zapisane w drzewie <in>  : "<<std::endl;
   tree.displayInOrder();
   std::cout<<"Wartosci zapisane w drzewie <pre> : "<<std::endl;
