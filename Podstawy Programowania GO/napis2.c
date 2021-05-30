@@ -7,8 +7,6 @@ Data: 08.12.2020
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-// Pozwala na uzycie toupper. Bez lini 18-20 kod nadal bedzie dzialal,
-// lecz będzie dzielil znaki na male i duze.
 int main(){
   char napis[100];
   fflush(stdin);
