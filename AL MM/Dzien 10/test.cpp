@@ -7,7 +7,11 @@ int main(int argc, char const *argv[]) {
   std::cin>>n;
   std::vector<int> t[n+1];
   int tab[n+1][n+1]={0};
-  for(int i=0;i<=n;i++) for(int j=0;j<=n;j++) tab[i][j]=0;
+  for(int i=0;i<=n;i++){
+    for(int j=0;j<=n;j++){
+        tab[i][j]=0;
+    }
+  }
   std::cout<<"Podaj pary sąsiadów: "<<std::endl;
   std::cout<<"\tPodaj a: ";
   std::cin>>a;
