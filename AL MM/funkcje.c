@@ -1,0 +1,1 @@
+/home/kazmir/Desktop/Zajecia zdalne/Funkcje/funkcje.c
