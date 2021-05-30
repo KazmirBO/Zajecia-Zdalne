@@ -14,9 +14,11 @@ int main(int argc, char const *argv[]) {
     std::cin>>b;
   while(a>=0 && b>=0){
     t[a].push_back(b);
-    t[b].push_back(a);
     tab[a][b]++;
-    tab[b][a]++;
+    if(a!=b){
+      t[b].push_back(a);
+      tab[b][a]++;
+    }
     std::cout<<"Podaj pary sąsiadów: "<<std::endl;
     std::cout<<"\tPodaj a: ";
     std::cin>>a;
