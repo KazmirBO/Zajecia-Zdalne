@@ -14,13 +14,11 @@ int main(int argc, char const *argv[]) {
   std::cout<<"\tPodaj b: ";
   std::cin>>b;
   do{
-    if(tab[a][b]==0){
-      t[a].push_back(b);
-      tab[a][b]++;
-      if(a!=b){
-        t[b].push_back(a);
-        tab[b][a]++;
-      }
+    t[a].push_back(b);
+    tab[a][b]++;
+    if(a!=b){
+      t[b].push_back(a);
+      tab[b][a]++;
     }
     std::cout<<"Podaj pary sąsiadów: "<<std::endl;
     std::cout<<"\tPodaj a: ";
