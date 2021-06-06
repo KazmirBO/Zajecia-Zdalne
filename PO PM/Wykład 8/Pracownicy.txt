@@ -1,0 +1,9 @@
+Nazwisko: Kowal
+Miejsce Urodzenia: Chelm
+Pensja: 2000
+Nazwisko: Lew
+Miejsce Urodzenia: Lublin
+Pensja: 2000
+Nazwisko: Malina
+Miejsce Urodzenia: Chelm
+Pensja: 3000
