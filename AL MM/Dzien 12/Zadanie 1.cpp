@@ -53,6 +53,7 @@ int main(int argc, char const *argv[]) {
     wynik=100;
     for(int i=0;i<75;i++){
       delta=0;
+      // Delta = |T1-B1| + |T2-B2| + |T3-B3| + |T4-B4|
       for(int j=0;j<4;j++){
         x=test[k].w[j]-wiedza[i].w[j];
         if(x<0) x=-x;
