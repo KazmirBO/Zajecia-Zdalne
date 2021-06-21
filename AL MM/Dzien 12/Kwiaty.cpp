@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #define nl std::cout<<std::endl
 class Kwiaty{
 public:
@@ -34,8 +35,7 @@ int main(int argc, char const *argv[]) {
     wynik=100;
     for(int j=0;j<75;j++){
       delta=0;
-      for(int k=0;k<4;k++) delta+=(kw[i].t[k]-kw[j].w[k]<0
-        ?-(kw[i].t[k]-kw[j].w[k]):kw[i].t[k]-kw[j].w[k]);
+      for(int k=0;k<4;k++) delta+=fabs(kw[i].t[k]-kw[j].w[k]);
       if(wynik>delta){
         wynik=delta;
         tmp=kw[j].wnazwa;
