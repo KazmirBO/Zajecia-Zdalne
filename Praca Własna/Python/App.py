@@ -1,7 +1,5 @@
-#!/bin/python3
-
+#!/usr/bin/env python
 import sys
-
 from PyQt5 import QtCore
 # from PyQt5.QtCore import Qt
 # From QtWidgets - QCheckBox, QDoubleSpinBox, QLCDNumber, QMainWindow,
@@ -39,7 +37,6 @@ class Window(QWidget):
         self.SLevel.addItems(["1", "2", "3", "4", "5"])
 
         self.top = QVBoxLayout()
-
         self.line1 = QHBoxLayout()
 
         self.line1.addWidget(QLabel("Name: "))
