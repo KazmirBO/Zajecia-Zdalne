@@ -213,6 +213,23 @@ class Window(QWidget):
 
         # ----------------------------------------------------------------------
 
+        self.exp = QFormLayout()
+        self.EText = QLabel("EXPERIENCE")
+        self.Current = QLineEdit()
+        self.Current.setFixedWidth(60)
+        self.Spent = QLineEdit()
+        self.Spent.setFixedWidth(60)
+        self.Total = QLineEdit()
+        self.Total.setFixedWidth(60)
+        self.EText.setAlignment(QtCore.Qt.AlignCenter)
+
+        self.exp.addRow(self.EText)
+        self.exp.addRow(QLabel("Current: "), self.Current)
+        self.exp.addRow(QLabel("Spent: "), self.Spent)
+        self.exp.addRow(QLabel("Total: "), self.Total)
+
+        # ----------------------------------------------------------------------
+
         self.resi = QVBoxLayout()
         self.resibottom = QFormLayout()
         self.RText = QLabel("RESILIENCE")
@@ -253,6 +270,7 @@ class Window(QWidget):
         self.middle.addLayout(self.chara)
         self.middle.addLayout(self.fate)
         self.middle.addLayout(self.move)
+        self.middle.addLayout(self.exp)
         self.middle.addLayout(self.resi)
 
         self.main.addLayout(self.middle)
