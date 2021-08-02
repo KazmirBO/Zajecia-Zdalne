@@ -1,23 +1,31 @@
 #!/usr/bin/env python
+
 import sys
 from PyQt5 import QtCore
-# from PyQt5.QtCore import Qt
-# From QtWidgets - QCheckBox, QDoubleSpinBox, QLCDNumber, QMainWindow,
-# QRadioButton, QPushButton, QProgressBar
 from PyQt5.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
                              QSpinBox, QVBoxLayout, QHBoxLayout, QGridLayout,
-                             QWidget, QFormLayout)
+                             QFormLayout, QMainWindow, QStatusBar, QWidget,
+                             QFileDialog)
 
 
-class Window(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Character Sheet")
-        self.resize(1200, 600)
-        self.main = QVBoxLayout()
+class Window(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.response = 'Default-name.txt'
+        self.setWindowTitle(
+            "Character Sheet - WFRP 4e - " + self.response)
+        # self.resize(1200, 600)
+        self.generalLayout = QVBoxLayout()
+        self._centralWidget = QWidget(self)
+        self.setCentralWidget(self._centralWidget)
+        self._centralWidget.setLayout(self.generalLayout)
+        self._createMenu()
+        self._createDisplay()
+        self._createStatusBar()
 
         # ----------------------------------------------------------------------
 
+    def _createDisplay(self):
         self.Classes = QComboBox()
         self.Classes.addItems(["Academics", "Burghers", "Courtiers",
                                "Peasants", "Rangers", "Riverfolk", "Rouges",
@@ -25,7 +33,7 @@ class Window(QWidget):
 
         self.Species = QComboBox()
         self.Species.addItems(
-            ["Human", "Dwarf", "Hlafling", "High Elf", "Wood Elf"])
+                 ["Human", "Dwarf", "Hlafling", "High Elf", "Wood Elf"])
 
         self.Level = QComboBox()
         self.Level.addItems(["1", "2", "3", "4"])
@@ -38,70 +46,57 @@ class Window(QWidget):
 
         self.top = QVBoxLayout()
         self.line1 = QHBoxLayout()
-
-        self.line1.addWidget(QLabel("Name: "))
-        self.Name = QLineEdit()
-        self.Name.setMinimumWidth(240)
-        self.line1.addWidget(self.Name)
-
-        self.Spec = QFormLayout()
-        self.Spec.addRow(QLabel("Species: "), self.Species)
-        self.line1.addLayout(self.Spec)
-
-        self.Cla = QFormLayout()
-        self.Cla.addRow(QLabel("Class: "), self.Classes)
-        self.line1.addLayout(self.Cla)
-
-        self.top.addLayout(self.line1)
-
         self.line2 = QHBoxLayout()
-
-        self.line2.addWidget(QLabel("Career: "))
-        self.line2.addWidget(QLineEdit())
-
-        self.CarL = QFormLayout()
-        self.CarL.addRow(QLabel("Career Level: "), self.Level)
-        self.line2.addLayout(self.CarL)
-
-        self.top.addLayout(self.line2)
-
         self.line3 = QHBoxLayout()
-
-        self.line3.addWidget(QLabel("Career Path: "))
-        self.line3.addWidget(QLineEdit())
-        self.line3.addWidget(QLabel("Status: "))
-
-        self.Stat = QFormLayout()
-        self.Stat.addRow(self.Status, self.SLevel)
-        self.line3.addLayout(self.Stat)
-
-        self.top.addLayout(self.line3)
-
         self.line4 = QHBoxLayout()
 
-        self.line4.addWidget(QLabel("Age: "))
+        self.Name = QLineEdit()
+        self.Car = QLineEdit()
+        self.CarP = QLineEdit()
         self.Age = QLineEdit()
-        self.Age.setFixedWidth(60)
-        self.line4.addWidget(self.Age)
-
-        self.line4.addWidget(QLabel("Height: "))
         self.Height = QLineEdit()
-        self.Height.setFixedWidth(120)
-        self.line4.addWidget(self.Height)
-
-        self.line4.addWidget(QLabel("Hair: "))
         self.Hair = QLineEdit()
-        self.line4.addWidget(self.Hair)
-
-        self.line4.addWidget(QLabel("Eyes: "))
         self.Eyes = QLineEdit()
+
+        self.Name.setMinimumWidth(160)
+        self.Age.setFixedWidth(60)
+        self.Height.setFixedWidth(120)
+
+        self.line1.addWidget(QLabel("Name: "))
+        self.line1.addWidget(self.Name)
+        self.line1.addWidget(QLabel("Species: "))
+        self.line1.addWidget(self.Species)
+        self.line1.addWidget(QLabel("Class: "))
+        self.line1.addWidget(self.Classes)
+
+        self.line2.addWidget(QLabel("Career: "))
+        self.line2.addWidget(self.Car)
+        self.line2.addWidget(QLabel("Career Level: "))
+        self.line2.addWidget(self.Level)
+
+        self.line3.addWidget(QLabel("Career Path: "))
+        self.line3.addWidget(self.CarP)
+        self.line3.addWidget(QLabel("Status: "))
+        self.line3.addWidget(self.Status)
+        self.line3.addWidget(self.SLevel)
+
+        self.line4.addWidget(QLabel("Age: "))
+        self.line4.addWidget(self.Age)
+        self.line4.addWidget(QLabel("Height: "))
+        self.line4.addWidget(self.Height)
+        self.line4.addWidget(QLabel("Hair: "))
+        self.line4.addWidget(self.Hair)
+        self.line4.addWidget(QLabel("Eyes: "))
         self.line4.addWidget(self.Eyes)
 
+        self.top.addLayout(self.line1)
+        self.top.addLayout(self.line2)
+        self.top.addLayout(self.line3)
         self.top.addLayout(self.line4)
         self.top.addWidget(QLabel())
         self.top.addStretch()
 
-        self.main.addLayout(self.top)
+        self.generalLayout.addLayout(self.top)
 
         # ----------------------------------------------------------------------
 
@@ -194,10 +189,51 @@ class Window(QWidget):
 
         self.characteristic = QLabel("CHARACTERISTICS")
         self.characteristic.setAlignment(QtCore.Qt.AlignCenter)
-
         self.chara.addWidget(self.characteristic)
         self.chara.addLayout(self.ch)
         self.chara.addStretch()
+
+        # ----------------------------------------------------------------------
+
+        self.WSi.valueChanged.connect(self.WSrefresh)
+        self.WSa.valueChanged.connect(self.WSrefresh)
+        self.WSc.valueChanged.connect(self.WSrefresh)
+
+        self.BSi.valueChanged.connect(self.BSrefresh)
+        self.BSa.valueChanged.connect(self.BSrefresh)
+        self.BSc.valueChanged.connect(self.BSrefresh)
+
+        self.Si.valueChanged.connect(self.Srefresh)
+        self.Sa.valueChanged.connect(self.Srefresh)
+        self.Sc.valueChanged.connect(self.Srefresh)
+
+        self.Ti.valueChanged.connect(self.Trefresh)
+        self.Ta.valueChanged.connect(self.Trefresh)
+        self.Tc.valueChanged.connect(self.Trefresh)
+
+        self.Ii.valueChanged.connect(self.Irefresh)
+        self.Ia.valueChanged.connect(self.Irefresh)
+        self.Ic.valueChanged.connect(self.Irefresh)
+
+        self.Agi.valueChanged.connect(self.Agrefresh)
+        self.Aga.valueChanged.connect(self.Agrefresh)
+        self.Agc.valueChanged.connect(self.Agrefresh)
+
+        self.Dexi.valueChanged.connect(self.Dexrefresh)
+        self.Dexa.valueChanged.connect(self.Dexrefresh)
+        self.Dexc.valueChanged.connect(self.Dexrefresh)
+
+        self.Inti.valueChanged.connect(self.Intrefresh)
+        self.Inta.valueChanged.connect(self.Intrefresh)
+        self.Intc.valueChanged.connect(self.Intrefresh)
+
+        self.WPi.valueChanged.connect(self.WPrefresh)
+        self.WPa.valueChanged.connect(self.WPrefresh)
+        self.WPc.valueChanged.connect(self.WPrefresh)
+
+        self.Feli.valueChanged.connect(self.Felrefresh)
+        self.Fela.valueChanged.connect(self.Felrefresh)
+        self.Felc.valueChanged.connect(self.Felrefresh)
 
         # ----------------------------------------------------------------------
 
@@ -213,20 +249,27 @@ class Window(QWidget):
 
         # ----------------------------------------------------------------------
 
-        self.exp = QFormLayout()
         self.EText = QLabel("EXPERIENCE")
-        self.Current = QLineEdit()
-        self.Current.setFixedWidth(60)
-        self.Spent = QLineEdit()
-        self.Spent.setFixedWidth(60)
-        self.Total = QLineEdit()
-        self.Total.setFixedWidth(60)
         self.EText.setAlignment(QtCore.Qt.AlignCenter)
+        self.exp = QFormLayout()
+        self.Current = QSpinBox()
+        self.Spent = QSpinBox()
+        self.Total = QSpinBox()
+        self.Current.setMaximum(10000)
+        self.Spent.setMaximum(10000)
+        self.Total.setMaximum(10000)
+        self.Current.setFixedWidth(80)
+        self.Spent.setFixedWidth(80)
+        self.Total.setFixedWidth(80)
 
         self.exp.addRow(self.EText)
         self.exp.addRow(QLabel("Current: "), self.Current)
         self.exp.addRow(QLabel("Spent: "), self.Spent)
         self.exp.addRow(QLabel("Total: "), self.Total)
+
+        self.Current.valueChanged.connect(self.Erefresh)
+        self.Spent.valueChanged.connect(self.Erefresh)
+        self.Total.valueChanged.connect(self.Erefresh)
 
         # ----------------------------------------------------------------------
 
@@ -264,6 +307,10 @@ class Window(QWidget):
         self.move.addLayout(self.mstat)
         self.move.addStretch()
 
+        self.Movement.valueChanged.connect(self.Mrefresh)
+        self.Walk.valueChanged.connect(self.Mrefresh)
+        self.Run.valueChanged.connect(self.Mrefresh)
+
         # ----------------------------------------------------------------------
 
         self.middle = QHBoxLayout()
@@ -273,9 +320,168 @@ class Window(QWidget):
         self.middle.addLayout(self.exp)
         self.middle.addLayout(self.resi)
 
-        self.main.addLayout(self.middle)
-        self.main.addStretch()
-        self.setLayout(self.main)
+        self.generalLayout.addLayout(self.middle)
+        self.generalLayout.addStretch()
+
+    def WSrefresh(self):
+        ini = self.WSi.value()
+        adv = self.WSa.value()
+        cur = ini + adv
+        self.WSc.setValue(cur)
+
+    def BSrefresh(self):
+        ini = self.BSi.value()
+        adv = self.BSa.value()
+        cur = ini + adv
+        self.BSc.setValue(cur)
+
+    def Srefresh(self):
+        ini = self.Si.value()
+        adv = self.Sa.value()
+        cur = ini + adv
+        self.Sc.setValue(cur)
+
+    def Trefresh(self):
+        ini = self.Ti.value()
+        adv = self.Ta.value()
+        cur = ini + adv
+        self.Tc.setValue(cur)
+
+    def Irefresh(self):
+        ini = self.Ii.value()
+        adv = self.Ia.value()
+        cur = ini + adv
+        self.Ic.setValue(cur)
+
+    def Agrefresh(self):
+        ini = self.Agi.value()
+        adv = self.Aga.value()
+        cur = ini + adv
+        self.Agc.setValue(cur)
+
+    def Dexrefresh(self):
+        ini = self.Dexi.value()
+        adv = self.Dexa.value()
+        cur = ini + adv
+        self.Dexc.setValue(cur)
+
+    def Intrefresh(self):
+        ini = self.Inti.value()
+        adv = self.Inta.value()
+        cur = ini + adv
+        self.Intc.setValue(cur)
+
+    def WPrefresh(self):
+        ini = self.WPi.value()
+        adv = self.WPa.value()
+        cur = ini + adv
+        self.WPc.setValue(cur)
+
+    def Felrefresh(self):
+        ini = self.Feli.value()
+        adv = self.Fela.value()
+        cur = ini + adv
+        self.Felc.setValue(cur)
+
+    def Mrefresh(self):
+        mov = self.Movement.value()
+        wal = 2 * mov
+        ru = 2 * wal
+        self.Walk.setValue(wal)
+        self.Run.setValue(ru)
+
+    def Erefresh(self):
+        cur = self.Current.value()
+        spe = self.Spent.value()
+        tot = cur + spe
+        self.Total.setValue(tot)
+
+    def _createMenu(self):
+        self.menu = self.menuBar().addMenu("&Menu")
+        self.menu.addAction('&Get File Name', self.getFileName)
+        self.menu.addAction('&Import', self.impo)
+        self.menu.addAction('&Export', self.expo)
+        self.menu.addAction('&Exit', self.close)
+
+    def _createStatusBar(self):
+        status = QStatusBar()
+        status.showMessage("Hello World!")
+        self.setStatusBar(status)
+
+    def impo(self):
+        stats = []
+        with open(self.response, 'r') as f:
+            stats = f.read().splitlines()
+        f.close()
+        self.WSi.setValue(int(stats[0]))
+        self.WSa.setValue(int(stats[1]))
+        self.BSi.setValue(int(stats[2]))
+        self.BSa.setValue(int(stats[3]))
+        self.Si.setValue(int(stats[4]))
+        self.Sa.setValue(int(stats[5]))
+        self.Ti.setValue(int(stats[6]))
+        self.Ta.setValue(int(stats[7]))
+        self.Ii.setValue(int(stats[8]))
+        self.Ia.setValue(int(stats[9]))
+        self.Agi.setValue(int(stats[10]))
+        self.Aga.setValue(int(stats[11]))
+        self.Dexi.setValue(int(stats[12]))
+        self.Dexa.setValue(int(stats[13]))
+        self.Inti.setValue(int(stats[14]))
+        self.Inta.setValue(int(stats[15]))
+        self.WPi.setValue(int(stats[16]))
+        self.WPa.setValue(int(stats[17]))
+        self.Feli.setValue(int(stats[18]))
+        self.Fela.setValue(int(stats[19]))
+        self.Name.setText(str(stats[20]))
+        self.Car.setText(str(stats[21]))
+        self.CarP.setText(str(stats[22]))
+        self.Age.setText(str(stats[23]))
+        self.Height.setText(str(stats[24]))
+        self.Hair.setText(str(stats[25]))
+        self.Eyes.setText(str(stats[26]))
+
+    def expo(self):
+        with open(self.response, 'w') as f:
+            f.write('%s\n' % self.WSi.value())
+            f.write('%s\n' % self.WSa.value())
+            f.write('%s\n' % self.BSi.value())
+            f.write('%s\n' % self.BSa.value())
+            f.write('%s\n' % self.Si.value())
+            f.write('%s\n' % self.Sa.value())
+            f.write('%s\n' % self.Ti.value())
+            f.write('%s\n' % self.Ta.value())
+            f.write('%s\n' % self.Ii.value())
+            f.write('%s\n' % self.Ia.value())
+            f.write('%s\n' % self.Agi.value())
+            f.write('%s\n' % self.Aga.value())
+            f.write('%s\n' % self.Dexi.value())
+            f.write('%s\n' % self.Dexa.value())
+            f.write('%s\n' % self.Inti.value())
+            f.write('%s\n' % self.Inta.value())
+            f.write('%s\n' % self.WPi.value())
+            f.write('%s\n' % self.WPa.value())
+            f.write('%s\n' % self.Feli.value())
+            f.write('%s\n' % self.Fela.value())
+            f.write('%s\n' % self.Name.text())
+            f.write('%s\n' % self.Car.text())
+            f.write('%s\n' % self.CarP.text())
+            f.write('%s\n' % self.Age.text())
+            f.write('%s\n' % self.Height.text())
+            f.write('%s\n' % self.Hair.text())
+            f.write('%s\n' % self.Eyes.text())
+            f.close()
+
+    def getFileName(self):
+        filename = QFileDialog.getOpenFileName(
+            self,
+            'Select File',
+            '',
+            'Text File (*.txt)'
+        )[0]
+        self.response = filename.split("/")[-1]
+        self.setWindowTitle(
+            "Character Sheet - WFRP 4e - " + self.response)
 
 
 if __name__ == "__main__":
