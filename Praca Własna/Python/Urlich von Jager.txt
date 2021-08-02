@@ -1,15 +1,15 @@
 Urlich von Jager
 0
 6
-Thief
+Prowler
 0
 Thief
 0
-2
-22
+0
+25
 180
-Brown
-Green
+Golden Bronze (Złoty brąz)
+Hazel (Piwny)
 26
 0
 35
