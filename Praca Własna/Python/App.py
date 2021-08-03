@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.response = 'Default-name.txt'
+        self.response = 'Default-name.zst'
         self.setWindowTitle(
             "Character Sheet - WFRP 4e - " + self.response)
         # self.resize(1200, 600)
@@ -504,7 +504,7 @@ class Window(QMainWindow):
             self,
             'Select File',
             '',
-            'Text File (*.txt)'
+            'ZST File (*.zst);; All Files (*)'
         )[0]
         self.response = filename.split("/")[-1]
         self.setWindowTitle(
