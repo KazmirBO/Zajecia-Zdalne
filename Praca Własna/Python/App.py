@@ -1,21 +1,23 @@
 #!/usr/bin/env python
+# UTF-8
 
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import qDebug
 from PyQt5.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
                              QSpinBox, QVBoxLayout, QHBoxLayout, QGridLayout,
                              QFormLayout, QMainWindow, QStatusBar, QWidget,
-                             QFileDialog)
+                             QFileDialog, QScrollArea)
 
 
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.response = 'Default-name.zst'
+        self.Title = "Character Sheet - WFRP 4e - " + self.response
         self.setFont(QFont('PatrickHand', 11))
-        self.setWindowTitle(
-            "Character Sheet - WFRP 4e - " + self.response)
+        self.setWindowTitle(self.Title)
         # self.resize(1200, 600)
         self.generalLayout = QVBoxLayout()
         self._centralWidget = QWidget(self)
@@ -325,6 +327,8 @@ class Window(QMainWindow):
         self.basic1 = QGridLayout()
         self.basic2 = QGridLayout()
 
+        # ----------------------------------------------------------------------
+
         self.basic1.addWidget(QLabel("Name"), 1, 0)
         self.basic1.addWidget(QLabel("Art"), 2, 0)
         self.basic1.addWidget(QLabel("Athletics"), 3, 0)
@@ -339,6 +343,8 @@ class Window(QMainWindow):
         self.basic1.addWidget(QLabel("Endurance"), 12, 0)
         self.basic1.addWidget(QLabel("Entertain"), 13, 0)
         self.basic1.addWidget(QLabel("Gamble"), 14, 0)
+
+        # ----------------------------------------------------------------------
 
         self.basic1.addWidget(QLabel("Characterisitc"), 1, 1)
         self.basic1.addWidget(QLabel("Dex"), 2, 1)
@@ -355,6 +361,8 @@ class Window(QMainWindow):
         self.basic1.addWidget(QLabel("Fel"), 13, 1)
         self.basic1.addWidget(QLabel("Int"), 14, 1)
 
+        # ----------------------------------------------------------------------
+
         self.art = QSpinBox()
         self.ath = QSpinBox()
         self.bri = QSpinBox()
@@ -368,6 +376,8 @@ class Window(QMainWindow):
         self.end = QSpinBox()
         self.ent = QSpinBox()
         self.gam = QSpinBox()
+
+        # ----------------------------------------------------------------------
 
         self.basic1.addWidget(QLabel("Adv"), 1, 2)
         self.basic1.addWidget(self.art, 2, 2)
@@ -383,6 +393,8 @@ class Window(QMainWindow):
         self.basic1.addWidget(self.end, 12, 2)
         self.basic1.addWidget(self.ent, 13, 2)
         self.basic1.addWidget(self.gam, 14, 2)
+
+        # ----------------------------------------------------------------------
 
         self.arta = QSpinBox()
         self.arta.setReadOnly(True)
@@ -411,6 +423,8 @@ class Window(QMainWindow):
         self.gama = QSpinBox()
         self.gama.setReadOnly(True)
 
+        # ----------------------------------------------------------------------
+
         self.basic1.addWidget(QLabel("Skill"), 1, 3)
         self.basic1.addWidget(self.arta, 2, 3)
         self.basic1.addWidget(self.atha, 3, 3)
@@ -425,6 +439,22 @@ class Window(QMainWindow):
         self.basic1.addWidget(self.enda, 12, 3)
         self.basic1.addWidget(self.enta, 13, 3)
         self.basic1.addWidget(self.gama, 14, 3)
+
+        # ----------------------------------------------------------------------
+
+        self.art.valueChanged.connect(self.Rarta)
+        self.ath.valueChanged.connect(self.Ratha)
+        self.bri.valueChanged.connect(self.Rbria)
+        self.chr.valueChanged.connect(self.Rchra)
+        self.cha.valueChanged.connect(self.Rchaa)
+        self.cli.valueChanged.connect(self.Rclia)
+        self.col.valueChanged.connect(self.Rcola)
+        self.con.valueChanged.connect(self.Rcona)
+        self.dod.valueChanged.connect(self.Rdoda)
+        self.dri.valueChanged.connect(self.Rdria)
+        self.end.valueChanged.connect(self.Renda)
+        self.ent.valueChanged.connect(self.Renta)
+        self.gam.valueChanged.connect(self.Rgama)
 
         # ----------------------------------------------------------------------
 
@@ -443,6 +473,8 @@ class Window(QMainWindow):
         self.basic2.addWidget(QLabel("Row"), 13, 0)
         self.basic2.addWidget(QLabel("Stealth"), 14, 0)
 
+        # ----------------------------------------------------------------------
+
         self.basic2.addWidget(QLabel("Characterisitc"), 1, 1)
         self.basic2.addWidget(QLabel("Fel"), 2, 1)
         self.basic2.addWidget(QLabel("Fel"), 3, 1)
@@ -458,6 +490,8 @@ class Window(QMainWindow):
         self.basic2.addWidget(QLabel("S"), 13, 1)
         self.basic2.addWidget(QLabel("Ag"), 14, 1)
 
+        # ----------------------------------------------------------------------
+
         self.gos = QSpinBox()
         self.hag = QSpinBox()
         self.inm = QSpinBox()
@@ -471,6 +505,8 @@ class Window(QMainWindow):
         self.rid = QSpinBox()
         self.row = QSpinBox()
         self.ste = QSpinBox()
+
+        # ----------------------------------------------------------------------
 
         self.basic2.addWidget(QLabel("Adv"), 1, 2)
         self.basic2.addWidget(self.gos, 2, 2)
@@ -486,6 +522,8 @@ class Window(QMainWindow):
         self.basic2.addWidget(self.rid, 12, 2)
         self.basic2.addWidget(self.row, 13, 2)
         self.basic2.addWidget(self.ste, 14, 2)
+
+        # ----------------------------------------------------------------------
 
         self.gosa = QSpinBox()
         self.gosa.setReadOnly(True)
@@ -514,6 +552,8 @@ class Window(QMainWindow):
         self.stea = QSpinBox()
         self.stea.setReadOnly(True)
 
+        # ----------------------------------------------------------------------
+
         self.basic2.addWidget(QLabel("Skill"), 1, 3)
         self.basic2.addWidget(self.gosa, 2, 3)
         self.basic2.addWidget(self.haga, 3, 3)
@@ -534,6 +574,20 @@ class Window(QMainWindow):
 
         # ----------------------------------------------------------------------
 
+        self.gos.valueChanged.connect(self.Rgosa)
+        self.hag.valueChanged.connect(self.Rhaga)
+        self.inm.valueChanged.connect(self.Rinma)
+        self.inu.valueChanged.connect(self.Rinua)
+        self.lea.valueChanged.connect(self.Rleaa)
+        self.mlb.valueChanged.connect(self.Rmlba)
+        self.mle.valueChanged.connect(self.Rmlea)
+        self.nav.valueChanged.connect(self.Rnava)
+        self.out.valueChanged.connect(self.Routa)
+        self.per.valueChanged.connect(self.Rpera)
+        self.rid.valueChanged.connect(self.Rrida)
+        self.row.valueChanged.connect(self.Rrowa)
+        self.ste.valueChanged.connect(self.Rstea)
+
         # ----------------------------------------------------------------------
 
         self.generalLayout.addLayout(self.top)
@@ -541,78 +595,157 @@ class Window(QMainWindow):
         self.generalLayout.addLayout(self.bottom)
         self.generalLayout.addStretch()
 
+        # ----------------------------------------------------------------------
+
+    def Suma(self, a, b):
+        return a.value()+b.value()
+
     def WSrefresh(self):
-        ini = self.WSi.value()
-        adv = self.WSa.value()
-        cur = ini + adv
-        self.WSc.setValue(cur)
+        self.WSc.setValue(self.Suma(self.WSi, self.WSa))
+        self.Rmlba()
+        self.Rmlea()
 
     def BSrefresh(self):
-        ini = self.BSi.value()
-        adv = self.BSa.value()
-        cur = ini + adv
-        self.BSc.setValue(cur)
+        self.BSc.setValue(self.Suma(self.BSi, self.BSa))
 
     def Srefresh(self):
-        ini = self.Si.value()
-        adv = self.Sa.value()
-        cur = ini + adv
-        self.Sc.setValue(cur)
+        self.Sc.setValue(self.Suma(self.Si, self.Sa))
+        self.Rclia()
+        self.Rinma()
+        self.Rrowa()
 
     def Trefresh(self):
-        ini = self.Ti.value()
-        adv = self.Ta.value()
-        cur = ini + adv
-        self.Tc.setValue(cur)
+        self.Tc.setValue(self.Suma(self.Ti, self.Ta))
+        self.Rcona()
+        self.Renda()
 
     def Irefresh(self):
-        ini = self.Ii.value()
-        adv = self.Ia.value()
-        cur = ini + adv
-        self.Ic.setValue(cur)
+        self.Ic.setValue(self.Suma(self.Ii, self.Ia))
+        self.Rinua()
+        self.Rnava()
+        self.Rpera()
 
     def Agrefresh(self):
-        ini = self.Agi.value()
-        adv = self.Aga.value()
-        cur = ini + adv
-        self.Agc.setValue(cur)
+        self.Agc.setValue(self.Suma(self.Agi, self.Aga))
+        self.Ratha()
+        self.Rdoda()
+        self.Rdria()
+        self.Rrida()
+        self.Rstea()
 
     def Dexrefresh(self):
-        ini = self.Dexi.value()
-        adv = self.Dexa.value()
-        cur = ini + adv
-        self.Dexc.setValue(cur)
+        self.Dexc.setValue(self.Suma(self.Dexi, self.Dexa))
+        self.Rarta()
 
     def Intrefresh(self):
-        ini = self.Inti.value()
-        adv = self.Inta.value()
-        cur = ini + adv
-        self.Intc.setValue(cur)
+        self.Intc.setValue(self.Suma(self.Inti, self.Inta))
+        self.Rgama()
+        self.Routa()
 
     def WPrefresh(self):
-        ini = self.WPi.value()
-        adv = self.WPa.value()
-        cur = ini + adv
-        self.WPc.setValue(cur)
+        self.WPc.setValue(self.Suma(self.WPi, self.WPa))
+        self.Rchaa()
+        self.Rcola()
 
     def Felrefresh(self):
-        ini = self.Feli.value()
-        adv = self.Fela.value()
-        cur = ini + adv
-        self.Felc.setValue(cur)
+        self.Felc.setValue(self.Suma(self.Feli, self.Fela))
+        self.Rbria()
+        self.Rchra()
+        self.Renta()
+        self.Rgosa()
+        self.Rhaga()
+        self.Rleaa()
+
+    # --------------------------------------------------------------------------
+
+    def Rarta(self):
+        self.arta.setValue(self.Suma(self.art, self.Dexc))
+
+    def Ratha(self):
+        self.atha.setValue(self.Suma(self.ath, self.Agc))
+
+    def Rbria(self):
+        self.bria.setValue(self.Suma(self.bri, self.Felc))
+
+    def Rchra(self):
+        self.chra.setValue(self.Suma(self.chr, self.Felc))
+
+    def Rchaa(self):
+        self.chaa.setValue(self.Suma(self.cha, self.WPc))
+
+    def Rclia(self):
+        self.clia.setValue(self.Suma(self.cli, self.Sc))
+
+    def Rcola(self):
+        self.cola.setValue(self.Suma(self.col, self.WPc))
+
+    def Rcona(self):
+        self.cona.setValue(self.Suma(self.con, self.Tc))
+
+    def Rdoda(self):
+        self.doda.setValue(self.Suma(self.dod, self.Agc))
+
+    def Rdria(self):
+        self.dria.setValue(self.Suma(self.dri, self.Agc))
+
+    def Renda(self):
+        self.enda.setValue(self.Suma(self.end, self.Tc))
+
+    def Renta(self):
+        self.enta.setValue(self.Suma(self.ent, self.Felc))
+
+    def Rgama(self):
+        self.gama.setValue(self.Suma(self.gam, self.Intc))
+
+    def Rgosa(self):
+        self.gosa.setValue(self.Suma(self.gos, self.Felc))
+
+    def Rhaga(self):
+        self.haga.setValue(self.Suma(self.hag, self.Felc))
+
+    def Rinma(self):
+        self.inma.setValue(self.Suma(self.inm, self.Sc))
+
+    def Rinua(self):
+        self.inua.setValue(self.Suma(self.inu, self.Ic))
+
+    def Rleaa(self):
+        self.leaa.setValue(self.Suma(self.lea, self.Felc))
+
+    def Rmlba(self):
+        self.mlba.setValue(self.Suma(self.mlb, self.WSc))
+
+    def Rmlea(self):
+        self.mlea.setValue(self.Suma(self.mle, self.WSc))
+
+    def Rnava(self):
+        self.nava.setValue(self.Suma(self.nav, self.Ic))
+
+    def Routa(self):
+        self.outa.setValue(self.Suma(self.out, self.Intc))
+
+    def Rpera(self):
+        self.pera.setValue(self.Suma(self.per, self.Ic))
+
+    def Rrida(self):
+        self.rida.setValue(self.Suma(self.rid, self.Agc))
+
+    def Rrowa(self):
+        self.rowa.setValue(self.Suma(self.row, self.Sc))
+
+    def Rstea(self):
+        self.stea.setValue(self.Suma(self.ste, self.Agc))
+
+    # --------------------------------------------------------------------------
 
     def Mrefresh(self):
-        mov = self.Movement.value()
-        wal = 2 * mov
-        ru = 2 * wal
-        self.Walk.setValue(wal)
-        self.Run.setValue(ru)
+        self.Walk.setValue(self.Movement.value() * 2)
+        self.Run.setValue(self.Walk.value() * 2)
 
     def Erefresh(self):
-        cur = self.Current.value()
-        spe = self.Spent.value()
-        tot = cur + spe
-        self.Total.setValue(tot)
+        self.Total.setValue(self.Current.value() + self.Spent.value())
+
+    # --------------------------------------------------------------------------
 
     def _createMenu(self):
         self.menu = self.menuBar().addMenu("&Menu")
@@ -625,6 +758,8 @@ class Window(QMainWindow):
         status = QStatusBar()
         status.showMessage("Hello World!")
         self.setStatusBar(status)
+
+    # --------------------------------------------------------------------------
 
     def impo(self):
         stats = []
@@ -698,6 +833,8 @@ class Window(QMainWindow):
         self.row.setValue(int(stats[64]))
         self.ste.setValue(int(stats[65]))
 
+    # --------------------------------------------------------------------------
+
     def expo(self):
         with open(self.response, 'w') as f:
             # f.write('%s\n' % )
@@ -768,6 +905,8 @@ class Window(QMainWindow):
             f.write('%s\n' % self.row.value())
             f.write('%s\n' % self.ste.value())
             f.close()
+
+    # --------------------------------------------------------------------------
 
     def getFileName(self):
         filename = QFileDialog.getOpenFileName(
