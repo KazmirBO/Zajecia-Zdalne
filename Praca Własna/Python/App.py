@@ -21,7 +21,7 @@ class Skills(QMainWindow):
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.response = 'Default-name.zst'
+        self.response = 'Default-character.zst'
         self.Title = "Character Sheet - WFRP 4e - " + self.response
         self.setFont(QFont('PatrickHand', 12))
         self.setWindowTitle(self.Title)
