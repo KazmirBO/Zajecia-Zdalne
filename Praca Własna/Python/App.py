@@ -4,25 +4,35 @@
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtGui import QFont
-from PyQt5.QtCore import qDebug
 from PyQt5.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
                              QSpinBox, QVBoxLayout, QHBoxLayout, QGridLayout,
                              QFormLayout, QMainWindow, QStatusBar, QWidget,
-                             QFileDialog, QScrollArea)
+                             QFileDialog, QScrollArea, QPushButton)
 
+
+class Talents(QMainWindow):
+    def __init__(self, parent=None):
+        super(Talents, self).__init__(parent)
+
+class Skills(QMainWindow):
+    def __init__(self, parent=None):
+        super(Skills, self).__init__(parent)
 
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.response = 'Default-name.zst'
         self.Title = "Character Sheet - WFRP 4e - " + self.response
-        self.setFont(QFont('PatrickHand', 11))
+        self.setFont(QFont('PatrickHand', 12))
         self.setWindowTitle(self.Title)
-        # self.resize(1200, 600)
+        self.resize(1200, 800)
         self.generalLayout = QVBoxLayout()
         self._centralWidget = QWidget(self)
-        self.setCentralWidget(self._centralWidget)
         self._centralWidget.setLayout(self.generalLayout)
+        self._centralWidget.resize(1890, 1000)
+        self.scroll = QScrollArea()
+        self.scroll.setWidget(self._centralWidget)
+        self.setCentralWidget(self.scroll)
         self._createMenu()
         self._createDisplay()
         self._createStatusBar()
@@ -62,9 +72,9 @@ class Window(QMainWindow):
         self.Hair = QLineEdit()
         self.Eyes = QLineEdit()
 
-        self.Name.setMinimumWidth(160)
+        self.Name.setMinimumWidth(120)
         self.Age.setFixedWidth(60)
-        self.Height.setFixedWidth(120)
+        self.Height.setFixedWidth(100)
 
         self.line1.addWidget(QLabel("Name: "))
         self.line1.addWidget(self.Name)
@@ -593,9 +603,23 @@ class Window(QMainWindow):
         self.generalLayout.addLayout(self.top)
         self.generalLayout.addLayout(self.middle)
         self.generalLayout.addLayout(self.bottom)
+        self.TalentButton = QPushButton()
+        self.TalentButton.clicked.connect(self.ShowTalent)
+        self.TalentWindow = Talents(self)
+        # self.generalLayout.addWidget(self.TalentButton)
+        self.SkillButton = QPushButton()
+        self.SkillButton.clicked.connect(self.ShowSkill)
+        self.SkillWindow = Skills(self)
+        # self.generalLayout.addWidget(self.SkillButton)
         self.generalLayout.addStretch()
 
         # ----------------------------------------------------------------------
+
+    def ShowTalent(self):
+        self.TalentWindow.show()
+
+    def ShowSkill(self):
+        self.SkillWindow.show()
 
     def Suma(self, a, b):
         return a.value()+b.value()
@@ -766,6 +790,7 @@ class Window(QMainWindow):
         with open(self.response, 'r') as f:
             stats = f.read().splitlines()
         f.close()
+        count = 0
         self.Name.setText(str(stats[0]))
         self.Species.setCurrentIndex(int(stats[1]))
         self.Classes.setCurrentIndex(int(stats[2]))
