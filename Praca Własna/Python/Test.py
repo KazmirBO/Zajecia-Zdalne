@@ -1,35 +1,81 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtWidgets import QMainWindow
-import sys
+import sys, random, os, atexit
+from PyQt5 import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 
-class Second(QMainWindow):
+class Main(QMainWindow):
     def __init__(self, parent=None):
-        super(Second, self).__init__(parent)
+        super().__init__(parent)
+        self.Title = "Test program"
+        self.setWindowTitle(self.Title)
+        self.resize(1, 1)
+        self.response = './test.txt'
+        self.generalLayout = QHBoxLayout()
+        self._centralWidget = QWidget(self)
+        self._centralWidget.setLayout(self.generalLayout)
+        self.setCentralWidget(self._centralWidget)
+        self._createDisplay()
+        pass
 
+    def __del__(self):
+        self.expo()
+        pass
 
-class First(QMainWindow):
-    def __init__(self, parent=None):
-        super(First, self).__init__(parent)
-        self.pushButton = QtGui.QPushButton("click me")
+    def _createDisplay(self):
+        self.main = QGridLayout()
+        self.count = QSpinBox()
+        self.count.valueChanged.connect(self.create)
+        self.impo()
+        self.generalLayout.addWidget(self.count)
+        self.generalLayout.addLayout(self.main)
+        pass
 
-        self.setCentralWidget(self.pushButton)
+    def create(self):
+        i = 0
+        self.max = int(self.count.value())
+        if self.max >= 0:
+            for i in reversed(range(self.main.count())):
+                self.main.itemAt(i).widget().setParent(None)
+                pass
+            pass
+        for i in range(self.max):
+            self.main.addWidget(QLabel("Test " + str(i)), int(i%2), int(i/2))
+            pass
+        pass
 
-        self.pushButton.clicked.connect(self.on_pushButton_clicked)
-        self.dialog = Second(self)
+    def impo(self):
+        if os.path.isfile(self.response) == False:
+            f = open(self.response, 'w')
+            f.write("0")
+            f.close()
+            pass
+        pass
 
-    def on_pushButton_clicked(self):
-        self.dialog.show()
+        stats = []
+        with open(self.response, 'r') as f:
+            stats = f.read().splitlines()
+        f.close()
+        self.count.setValue(int(stats[0]))
+        pass
 
+    def expo(self):
+        with open(self.response, 'w') as f:
+            # f.write('%s\n' % value/text())
+            f.write('%s\n' % self.max)
+        pass
 
-def main():
-    app = QtGui.QApplication(sys.argv)
-    main = First()
-    main.show()
+    pass
+
+def window():
+    app = QApplication(sys.argv)
+    window = Main()
+    window.show()
     sys.exit(app.exec_())
+    pass
 
 if __name__ == '__main__':
-    main()
+    window()
