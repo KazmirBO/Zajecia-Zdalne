@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys, random, os, atexit
-from PyQt5 import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+import sys, random, os, atexit, platform
+# from PyQt5 import *
+# from PyQt5.QtGui import *
+from PyQt5.QtWidgets import (QHBoxLayout, QWidget, QGridLayout, QSpinBox,
+                             QMainWindow, QApplication, QLabel, QLineEdit)
 
 
 class Main(QMainWindow):
@@ -13,7 +14,6 @@ class Main(QMainWindow):
         self.Title = "Test program"
         self.setWindowTitle(self.Title)
         self.resize(1, 1)
-        self.response = './test.txt'
         self.generalLayout = QHBoxLayout()
         self._centralWidget = QWidget(self)
         self._centralWidget.setLayout(self.generalLayout)
@@ -28,6 +28,7 @@ class Main(QMainWindow):
     def _createDisplay(self):
         self.main = QGridLayout()
         self.count = QSpinBox()
+        self.count.setFixedWidth(50)
         self.count.valueChanged.connect(self.create)
         self.impo()
         self.generalLayout.addWidget(self.count)
@@ -43,15 +44,26 @@ class Main(QMainWindow):
                 pass
             pass
         for i in range(self.max):
-            self.main.addWidget(QLabel("Test " + str(i)), int(i%2), int(i/2))
+            self.main.addWidget(QLineEdit(), int(i%2), int(i/2))
             pass
         pass
 
     def impo(self):
-        if os.path.isfile(self.response) == False:
-            f = open(self.response, 'w')
-            f.write("0")
-            f.close()
+        if platform.system() == 'Linux':
+            self.response = '/tmp/test.txt'
+            if os.path.isfile(self.response) == False:
+                f = open(self.response, 'w')
+                f.write("0")
+                f.close()
+                pass
+            pass
+        elif platform.system() == 'Windows':
+            self.response = './test.txt'
+            if os.path.isfile(self.response) == False:
+                f = open(self.response, 'w')
+                f.write("0")
+                f.close()
+                pass
             pass
         pass
 
