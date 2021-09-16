@@ -29,7 +29,7 @@ class Window(QMainWindow):
         self.generalLayout = QVBoxLayout()
         self._centralWidget = QWidget(self)
         self._centralWidget.setLayout(self.generalLayout)
-        self._centralWidget.resize(1890, 1000)
+        self._centralWidget.resize(1890, 980)
         self.scroll = QScrollArea()
         self.scroll.setWidget(self._centralWidget)
         self.setCentralWidget(self.scroll)
