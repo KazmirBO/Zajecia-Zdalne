@@ -21,7 +21,7 @@ class Skills(QMainWindow):
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.response = 'Default-character.zst'
+        self.response = 'Default-character.chr'
         self.Title = "Character Sheet - WFRP 4e - " + self.response
         self.setFont(QFont('PatrickHand', 12))
         self.setWindowTitle(self.Title)
@@ -938,7 +938,7 @@ class Window(QMainWindow):
             self,
             'Select File',
             '',
-            'ZST File (*.zst);; All Files (*)'
+            'Character File (*.chr);; All Files (*)'
         )[0]
         self.response = filename.split("/")[-1]
         self.setWindowTitle(
