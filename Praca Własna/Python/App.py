@@ -10,14 +10,6 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
                              QFileDialog, QScrollArea, QPushButton)
 
 
-class Talents(QMainWindow):
-    def __init__(self, parent=None):
-        super(Talents, self).__init__(parent)
-
-class Skills(QMainWindow):
-    def __init__(self, parent=None):
-        super(Skills, self).__init__(parent)
-
 class Window(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -603,14 +595,6 @@ class Window(QMainWindow):
         self.generalLayout.addLayout(self.top)
         self.generalLayout.addLayout(self.middle)
         self.generalLayout.addLayout(self.bottom)
-        self.TalentButton = QPushButton()
-        self.TalentButton.clicked.connect(self.ShowTalent)
-        self.TalentWindow = Talents(self)
-        # self.generalLayout.addWidget(self.TalentButton)
-        self.SkillButton = QPushButton()
-        self.SkillButton.clicked.connect(self.ShowSkill)
-        self.SkillWindow = Skills(self)
-        # self.generalLayout.addWidget(self.SkillButton)
         self.generalLayout.addStretch()
 
         # ----------------------------------------------------------------------
