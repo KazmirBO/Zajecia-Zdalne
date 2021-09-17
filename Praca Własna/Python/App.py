@@ -959,15 +959,10 @@ class Window(QMainWindow):
     # --------------------------------------------------------------------------
 
     def getFileName(self):
-        filename = QFileDialog.getOpenFileName(
-            self,
-            'Select File',
-            '',
-            'Character File (*.chr);; All Files (*)'
-        )[0]
+        filename = QFileDialog.getOpenFileName(self, 'Select File', '',
+            'Character File (*.chr);; All Files (*)')[0]
         self.response = filename.split("/")[-1]
-        self.setWindowTitle(
-            "Character Sheet - WFRP 4e - " + self.response)
+        self.setWindowTitle("Character Sheet - WFRP 4e - " + self.response)
 
 
 if __name__ == "__main__":
