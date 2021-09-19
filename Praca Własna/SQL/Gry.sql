@@ -27,3 +27,5 @@ ALTER TABLE wyp
 ALTER TABLE wyp
     ADD CONSTRAINT wyp_kto_fk FOREIGN KEY ( kto_id )
         REFERENCES kto ( id );
+
+--- UPDATE kto SET imie='',nazwisko='',telefon= WHERE id=;

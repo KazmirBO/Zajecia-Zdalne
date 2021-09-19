@@ -57,15 +57,24 @@ class Window(QMainWindow):
         self.line4 = QHBoxLayout()
 
         self.Name = QLineEdit()
+        self.Name.setPlaceholderText("Character Name")
         self.Car = QLineEdit()
+        self.Car.setPlaceholderText("Character Career...")
         self.CarP = QLineEdit()
+        self.CarP.setPlaceholderText("... and Carrer Path")
         self.Age = QLineEdit()
+        self.Age.setInputMask("999 yo")
+        self.Age.setPlaceholderText("Age")
         self.Height = QLineEdit()
+        self.Height.setInputMask("9'9'', 999 cm")
+        self.Height.setPlaceholderText("Height")
         self.Hair = QLineEdit()
+        self.Hair.setPlaceholderText("Hair")
         self.Eyes = QLineEdit()
+        self.Eyes.setPlaceholderText("Eyes")
 
         self.Name.setMinimumWidth(120)
-        self.Age.setFixedWidth(60)
+        self.Age.setFixedWidth(70)
         self.Height.setFixedWidth(100)
 
         self.line1.addWidget(QLabel("Name: "))
@@ -252,6 +261,28 @@ class Window(QMainWindow):
 
         # ----------------------------------------------------------------------
 
+        self.move = QVBoxLayout()
+        self.mstat = QFormLayout()
+        self.MText = QLabel("MOVEMENT")
+        self.MText.setAlignment(QtCore.Qt.AlignCenter)
+        self.Movement = QSpinBox()
+        self.Walk = QSpinBox()
+        self.Run = QSpinBox()
+
+        self.mstat.addRow(QLabel("Movement: "), self.Movement)
+        self.mstat.addRow(QLabel("Walk: "), self.Walk)
+        self.mstat.addRow(QLabel("Run: "), self.Run)
+
+        self.move.addWidget(self.MText)
+        self.move.addLayout(self.mstat)
+        self.move.addStretch()
+
+        self.Movement.valueChanged.connect(self.Mrefresh)
+        self.Walk.valueChanged.connect(self.Mrefresh)
+        self.Run.valueChanged.connect(self.Mrefresh)
+
+        # ----------------------------------------------------------------------
+
         self.EText = QLabel("EXPERIENCE")
         self.EText.setAlignment(QtCore.Qt.AlignCenter)
         self.exp = QFormLayout()
@@ -294,25 +325,30 @@ class Window(QMainWindow):
 
         # ----------------------------------------------------------------------
 
-        self.move = QVBoxLayout()
-        self.mstat = QFormLayout()
-        self.MText = QLabel("MOVEMENT")
-        self.MText.setAlignment(QtCore.Qt.AlignCenter)
-        self.Movement = QSpinBox()
-        self.Walk = QSpinBox()
-        self.Run = QSpinBox()
+        self.amb = QFormLayout()
+        self.SAP = QLineEdit()
+        self.LAP = QLineEdit()
+        self.LAP = QLineEdit()
+        self.par = QFormLayout()
+        self.SAG = QLineEdit()
+        self.LAG = QLineEdit()
+        self.members = QLineEdit()
+        self.partyName = QLineEdit()
+        self.ambitions = QLabel("AMBITIONS")
+        self.ambitions.setAlignment(QtCore.Qt.AlignCenter)
+        self.party = QLabel("PARTY")
+        self.party.setAlignment(QtCore.Qt.AlignCenter)
 
-        self.mstat.addRow(QLabel("Movement: "), self.Movement)
-        self.mstat.addRow(QLabel("Walk: "), self.Walk)
-        self.mstat.addRow(QLabel("Run: "), self.Run)
+        # ----------------------------------------------------------------------
 
-        self.move.addWidget(self.MText)
-        self.move.addLayout(self.mstat)
-        self.move.addStretch()
-
-        self.Movement.valueChanged.connect(self.Mrefresh)
-        self.Walk.valueChanged.connect(self.Mrefresh)
-        self.Run.valueChanged.connect(self.Mrefresh)
+        self.amb.addRow(self.ambitions)
+        self.amb.addRow(QLabel("Short-term: "), self.SAP)
+        self.amb.addRow(QLabel("Long-term: "), self.LAP)
+        self.par.addRow(self.party)
+        self.par.addRow(QLabel("Party name: "), self.partyName)
+        self.par.addRow(QLabel("Short-term: "), self.SAG)
+        self.par.addRow(QLabel("Long-term: "), self.LAG)
+        self.par.addRow(QLabel("Members: "), self.members)
 
         # ----------------------------------------------------------------------
 
@@ -322,13 +358,14 @@ class Window(QMainWindow):
         self.middle.addLayout(self.move)
         self.middle.addLayout(self.exp)
         self.middle.addLayout(self.resi)
+        self.middle.addLayout(self.amb)
+        self.middle.addLayout(self.par)
 
         # ----------------------------------------------------------------------
 
         self.bottom = QGridLayout()
         self.basic1 = QGridLayout()
         self.basic2 = QGridLayout()
-        self.basic3 = QFormLayout()
 
         # ----------------------------------------------------------------------
 
@@ -574,34 +611,8 @@ class Window(QMainWindow):
 
         # ----------------------------------------------------------------------
 
-        self.SAP = QLineEdit()
-        self.LAP = QLineEdit()
-        self.SAG = QLineEdit()
-        self.LAG = QLineEdit()
-        self.LAP = QLineEdit()
-        self.members = QLineEdit()
-        self.partyName = QLineEdit()
-        self.ambitions = QLabel("AMBITIONS")
-        self.ambitions.setAlignment(QtCore.Qt.AlignCenter)
-        self.party = QLabel("PARTY")
-        self.party.setAlignment(QtCore.Qt.AlignCenter)
-
-        # ----------------------------------------------------------------------
-
-        self.basic3.addRow(self.ambitions)
-        self.basic3.addRow(QLabel("Short-term: "), self.SAP)
-        self.basic3.addRow(QLabel("Long-term: "), self.LAP)
-        self.basic3.addRow(self.party)
-        self.basic3.addRow(QLabel("Party name: "), self.partyName)
-        self.basic3.addRow(QLabel("Short-term: "), self.SAG)
-        self.basic3.addRow(QLabel("Long-term: "), self.LAG)
-        self.basic3.addRow(QLabel("Members: "), self.members)
-
-        # ----------------------------------------------------------------------
-
         self.bottom.addLayout(self.basic1, 0, 0)
         self.bottom.addLayout(self.basic2, 0, 1)
-        self.bottom.addLayout(self.basic3, 0, 2)
 
         # ----------------------------------------------------------------------
 
