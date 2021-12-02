@@ -11,7 +11,8 @@ int main(int argc, char const *argv[]){
 	std::ostream_iterator<std::string> out(std::cout, " ");
 	std::copy(v1.begin(), v1.end(), out);
 	nl;
-	if(std::equal(v1.begin(), v1.end(), v2)) std::cout<<"Zakresy SA podobne."<<std::endl;
-	else std::cout<<"Zakresy NIE sa podobne."<<std::endl;
+	if(std::equal(v1.begin(), v1.end(), v2))
+		std::cout<<"Zakresy SA podobne."<<std::endl;
+	else std::cout<<"Zakresy NIE SA podobne."<<std::endl;
 	return 0;
 }
