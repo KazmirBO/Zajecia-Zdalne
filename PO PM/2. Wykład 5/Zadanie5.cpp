@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
       if(x%2==1) return 1;
       else return 0;
     });
-  std::cout << "Liczb wiekszych jest: " << n;
+  std::cout << "Liczb wiekszych jest: " << m;
   nl;
   std::cout << "Liczb nieparzystych jest: " << n;
   nl;
