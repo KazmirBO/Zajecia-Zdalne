@@ -1,9 +1,10 @@
 #ifndef DATA_H
 #define DATA_H
 #include <ostream>
-class Data{
+class Data {
 private:
   int Rok, Mies, Dzien, Godz, Min;
+
 public:
   void Zmien_czas(int czas);
   Data(int NewRok, int NewMiesiac, int NewDzien, int NewGodz, int NewMin);

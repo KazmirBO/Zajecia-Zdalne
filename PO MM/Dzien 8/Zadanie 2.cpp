@@ -1,25 +1,25 @@
-#include <iostream>
 #include "Naglowek 2.h"
+#include <iostream>
 int main(int argc, char const *argv[]) {
   double width;
   double length;
-  //bool tryAgain=true;
+  // bool tryAgain=true;
   Rectangle myRectangle;
-  std::cout<<"Podaj szerokosc: ";
-  std::cin>>width;
-  std::cout<<"Podaj dlugosc: ";
-  std::cin>>length;
-  try{
+  std::cout << "Podaj szerokosc: ";
+  std::cin >> width;
+  std::cout << "Podaj dlugosc: ";
+  std::cin >> length;
+  try {
     myRectangle.setWidth(width);
     myRectangle.setLength(length);
-    std::cout<<"Pole prostokata: "<<myRectangle.getArea()<<std::endl;
-  }catch(Rectangle::UjemnyWidth e){
-    std::cout<<"Blad: liczba "<<e.getValue()<<
-    " jest bledna szerokoscia prostokata"<<std::endl;
-  }catch(Rectangle::UjemnyLength e){
-  std::cout<<"Blad: liczba "<<e.getValue()<<
-  " jest bledna dlugoscia prostokata"<<std::endl;
-}
+    std::cout << "Pole prostokata: " << myRectangle.getArea() << std::endl;
+  } catch (Rectangle::UjemnyWidth e) {
+    std::cout << "Blad: liczba " << e.getValue()
+              << " jest bledna szerokoscia prostokata" << std::endl;
+  } catch (Rectangle::UjemnyLength e) {
+    std::cout << "Blad: liczba " << e.getValue()
+              << " jest bledna dlugoscia prostokata" << std::endl;
+  }
   /*
   std::cout<<"Podaj szerokosc: ";
   std::cin>>width;
@@ -48,7 +48,7 @@ int main(int argc, char const *argv[]) {
   }
   std::cout<<"Pole prostokata: "<<myRectangle.getArea()<<std::endl;
   */
-  std::cout<<"Koniec Programu"<<std::endl;
-  std::cout<<std::endl;
+  std::cout << "Koniec Programu" << std::endl;
+  std::cout << std::endl;
   return 0;
 }
