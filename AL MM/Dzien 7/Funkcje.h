@@ -8,7 +8,7 @@ void Tmp(int tab[], int tab_t[], int N);
 void BabelkoweSort(int tab[], int N);
 void MergeSort(int tab[], int startIndex, int middleIndex, int endIndex);
 void MergeSort(int tab[], int startIndex, int endIndex);
-int  Podzial(int tab[], int startIndex, int endIndex);
+int Podzial(int tab[], int startIndex, int endIndex);
 void QuickSort(int tab[], int startIndex, int endIndex);
 void Babelkowe(int tab[], int N);
 void Merge(int tab[], int N);

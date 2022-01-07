@@ -1,8 +1,8 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
-class BinaryTree{
+class BinaryTree {
 private:
-  struct TreeNode{
+  struct TreeNode {
     int value;
     TreeNode *left;
     TreeNode *right;
@@ -15,14 +15,15 @@ private:
   void displayInOrder(TreeNode *) const;
   void displayPreOrder(TreeNode *) const;
   void displayPostOrder(TreeNode *) const;
+
 public:
-  BinaryTree(){root=nullptr;}
-  ~BinaryTree(){destroySubTree(root);}
+  BinaryTree() { root = nullptr; }
+  ~BinaryTree() { destroySubTree(root); }
   void insertNode(int);
   bool searchNode(int);
   void remove(int);
-  void displayInOrder() const{displayInOrder(root);}
-  void displayPreOrder() const{displayPreOrder(root);}
-  void displayPostOrder() const{displayPostOrder(root);}
+  void displayInOrder() const { displayInOrder(root); }
+  void displayPreOrder() const { displayPreOrder(root); }
+  void displayPostOrder() const { displayPostOrder(root); }
 };
 #endif
