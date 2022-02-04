@@ -8,6 +8,6 @@ struct kolumna {
   float l2;
   float l3;
 };
-float max(float a,float b,float c);
-float sort(int ile,float t[]);
+float max(float a, float b, float c);
+float sort(int ile, float t[]);
 #endif
