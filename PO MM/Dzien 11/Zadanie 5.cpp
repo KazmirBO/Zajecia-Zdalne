@@ -10,8 +10,8 @@ int main() {
   plik.open("w-pustyni-i-w-puszczy.txt", std::ios::in);
   plik2.open("Znaki.txt", std::ios::out);
   std::string napis;
-  std::string Znak = "H";
-  std::vector<int> Ilosc = {1};
+  std::string Znak;
+  std::vector<int> Ilosc;
   int Count = 0, Akapity = 0, Wyrazy = 0, a, r;
   bool pow;
   while (!plik.eof()) {

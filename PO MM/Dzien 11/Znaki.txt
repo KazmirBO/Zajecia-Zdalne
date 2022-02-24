@@ -1,4 +1,4 @@
-Znak: H wystepuje: 77 razy.
+Znak: H wystepuje: 76 razy.
 Znak: e wystepuje: 38310 razy.
 Znak: n wystepuje: 23921 razy.
 Znak: r wystepuje: 20642 razy.
@@ -9,7 +9,7 @@ Znak: i wystepuje: 46156 razy.
 Znak: w wystepuje: 20809 razy.
 Znak: c wystepuje: 19707 razy.
 Znak: z wystepuje: 31428 razy.
-Znak:  wystepuje: 5777 razy.
+Znak: wystepuje: 5777 razy.
 Znak: W wystepuje: 702 razy.
 Znak: p wystepuje: 13885 razy.
 Znak: u wystepuje: 10434 razy.
@@ -31,19 +31,19 @@ Znak: O wystepuje: 393 razy.
 Znak: Z wystepuje: 363 razy.
 Znak: D wystepuje: 401 razy.
 Znak: A wystepuje: 855 razy.
-Znak: Å wystepuje: 25897 razy.
-Znak:  wystepuje: 58 razy.
-Znak: â wystepuje: 3231 razy.
-Znak: € wystepuje: 3231 razy.
-Znak: ” wystepuje: 2489 razy.
+Znak: ï¿½ wystepuje: 25897 razy.
+Znak: ï¿½ wystepuje: 58 razy.
+Znak: ï¿½ wystepuje: 3231 razy.
+Znak: ï¿½ wystepuje: 3231 razy.
+Znak: ï¿½ wystepuje: 2489 razy.
 Znak: , wystepuje: 9814 razy.
 Znak: l wystepuje: 11653 razy.
 Znak: m wystepuje: 13525 razy.
-Znak: Ã wystepuje: 5221 razy.
-Znak: ³ wystepuje: 5216 razy.
-Znak: ‚ wystepuje: 15096 razy.
+Znak: ï¿½ wystepuje: 5221 razy.
+Znak: ï¿½ wystepuje: 5216 razy.
+Znak: ï¿½ wystepuje: 15096 razy.
 Znak: a wystepuje: 44766 razy.
-Znak: › wystepuje: 4024 razy.
+Znak: ï¿½ wystepuje: 4024 razy.
 Znak: T wystepuje: 540 razy.
 Znak: o wystepuje: 35641 razy.
 Znak: d wystepuje: 18045 razy.
@@ -52,51 +52,51 @@ Znak: g wystepuje: 7555 razy.
 Znak: b wystepuje: 9262 razy.
 Znak: ( wystepuje: 43 razy.
 Znak: ) wystepuje: 43 razy.
-Znak: ¼ wystepuje: 5445 razy.
-Znak: Ä wystepuje: 17194 razy.
-Znak: ™ wystepuje: 7875 razy.
+Znak: ï¿½ wystepuje: 5445 razy.
+Znak: ï¿½ wystepuje: 17194 razy.
+Znak: ï¿½ wystepuje: 7875 razy.
 Znak: F wystepuje: 213 razy.
 Znak: h wystepuje: 6530 razy.
 Znak: . wystepuje: 5095 razy.
 Znak: : wystepuje: 491 razy.
-Znak: … wystepuje: 6032 razy.
+Znak: ï¿½ wystepuje: 6032 razy.
 Znak: ? wystepuje: 470 razy.
-Znak: ‡ wystepuje: 3296 razy.
+Znak: ï¿½ wystepuje: 3296 razy.
 Znak: P wystepuje: 701 razy.
-Znak: „ wystepuje: 855 razy.
+Znak: ï¿½ wystepuje: 855 razy.
 Znak: J wystepuje: 275 razy.
 Znak: E wystepuje: 120 razy.
 Znak: C wystepuje: 519 razy.
 Znak: M wystepuje: 892 razy.
 Znak: ! wystepuje: 722 razy.
-Znak:  wystepuje: 227 razy.
-Znak:  wystepuje: 227 razy.
+Znak: ï¿½ wystepuje: 227 razy.
+Znak: ï¿½ wystepuje: 227 razy.
 Znak: L wystepuje: 264 razy.
 Znak: ; wystepuje: 94 razy.
 Znak: K wystepuje: 734 razy.
 Znak: f wystepuje: 515 razy.
-Znak: ¦ wystepuje: 278 razy.
-Znak: º wystepuje: 380 razy.
+Znak: ï¿½ wystepuje: 278 razy.
+Znak: ï¿½ wystepuje: 380 razy.
 Znak: v wystepuje: 13 razy.
 Znak: 6 wystepuje: 1 razy.
 Znak: U wystepuje: 66 razy.
 Znak: G wystepuje: 341 razy.
 Znak: V wystepuje: 23 razy.
 Znak: ' wystepuje: 56 razy.
-Znak: © wystepuje: 1 razy.
-Znak: š wystepuje: 21 razy.
+Znak: ï¿½ wystepuje: 1 razy.
+Znak: ï¿½ wystepuje: 21 razy.
 Znak: Y wystepuje: 9 razy.
-Znak: » wystepuje: 17 razy.
-Znak: ¹ wystepuje: 2 razy.
+Znak: ï¿½ wystepuje: 17 razy.
+Znak: ï¿½ wystepuje: 2 razy.
 Znak: X wystepuje: 71 razy.
-Znak: “ wystepuje: 5 razy.
-Znak: Â wystepuje: 4 razy.
-Znak: « wystepuje: 2 razy.
+Znak: ï¿½ wystepuje: 5 razy.
+Znak: ï¿½ wystepuje: 4 razy.
+Znak: ï¿½ wystepuje: 2 razy.
 Znak: * wystepuje: 1 razy.
-Znak: ƒ wystepuje: 1 razy.
+Znak: ï¿½ wystepuje: 1 razy.
 Znak: / wystepuje: 13 razy.
 Znak: 0 wystepuje: 2 razy.
 
-ÅÄ…czna liczba znakÃ³w: 693667
+ÅÄ…czna liczba znakÃ³w: 693666
 ÅÄ…czna liczba akapitÃ³w: 5777
 ÅÄ…czna liczba WyrazÃ³w: 99411
