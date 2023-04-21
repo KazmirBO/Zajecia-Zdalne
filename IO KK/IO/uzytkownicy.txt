@@ -1,0 +1,3 @@
+Adam;Baryka;Warszawy;90090515836;
+Kasia;Kowal;Chełm;02070803628;
+Asia;Malina;Lublin;92071314764;

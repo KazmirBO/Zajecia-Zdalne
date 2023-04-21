@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style/style.css">
+	<link rel="stylesheet" href="./style/menu.css">
+	<link rel="stylesheet" href="./font/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+	<script defer src="./js/javascript.js"></script>
+	<script defer src="./font/js/all.js"></script>
+	<title>Kazmir_BO</title>
+	<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+
+	<style>
+	body {
+		font-family: "Audiowide", sans-serif;
+	}
+	</style>
+</head>
+
+<body>
+	<nav class="floating-menu">
+		<a href="#section1"><i style="font-size: 2em;" class="fa-solid fa-bars"></i></a><br>
+		<a href="#section2"><i style="font-size: 2em;" class="fa-brands fa-github"></i></a><br>
+		<a href="#section3"><i style="font-size: 2em;" class="fa-solid fa-user"></i></a><br>
+		<a href="#section4"><i style="font-size: 2em;" class="fa-solid fa-gamepad"></i></a><br>
+		<a href="#section5"><i style="font-size: 2em;" class="fa-solid fa-music"></i></a><br>
+		<a href="#section6"><i style="font-size: 2em;" class="fa-solid fa-terminal"></i></a>
+	</nav>
+
+	<section class="hidden darkGrey" id="section1">
+		<div class="avatar"></div>
+
+		<h1 class="hidden delay100">Strona <a href="#section7">Kazmir_BO#2300</a></h1>
+
+		<h3 class="hidden delay200">Jest bo jest... Nie pytaj dlaczego...</h3>
+
+		<div class="hidden delayArrow">
+			<a href="#section2"><i class="fa-solid fa-arrow-down arrow"></i></a>
+		</div>
+	</section>
+
+	<div class="spacer layer1"></div>
+
+	<div class="grey">
+		<section class="hidden" id="section2">
+			<div class="hidden delayArrow">
+				<a href="#section1"><i class="fa-solid fa-arrow-up arrow"></i></a>
+			</div>
+
+			<br><br><br>
+
+			<h1>Łapaj linka do GitHub</h1>
+
+			<div class="hidden delay100">
+				<a href="https://github.com/KazmirBO" target="_blank"><i style="font-size: 6em;" class="fa-brands fa-github"></i></a>
+			</div>
+
+			<br><br><br>
+
+			<div class="hidden delayArrow">
+				<a href="#section3"><i class="fa-solid fa-arrow-down arrow"></i></a>
+			</div>
+		</section>
+	</div>
+
+	<div class="spacer layer2"></div>
+
+	<div class="yellow">
+		<section class="hidden" id="section3">
+			<div class="hidden delayArrow">
+				<a href="#section2"><i style="color: black;" class="fa-solid fa-arrow-up arrow"></i></a>
+			</div>
+
+			<br>
+			<h1 style="color: black;">Trochę o mnie...</h1>
+			<br>
+
+			<h3 class="hidden delay100" style="color: black;">Zainteresowania: Gry, Muzyka i Programowanie</h3>
+
+			<br>
+
+			<div style="display: flex;">
+				<div class="hidden delay400"><a href="#section4"><i style="color: black; font-size: 2em;" class="fa-solid fa-gamepad arrow"></i></a></div>
+				<div class="hidden delay600"><a href="#section5"><i style="color: black; font-size: 2em;" class="fa-solid fa-music arrow"></i></a></div>
+				<div class="hidden delay800"><a href="#section6"><i style="color: black; font-size: 2em;" class="fa-solid fa-terminal arrow"></i></a></div>
+			</div>
+
+		</section>
+	</div>
+
+	<div class="spacer layer3"></div>
+
+	<div class="blue">
+		<section class="hidden" id="section4">
+			<div style="display: flex;">
+				<div class="hidden delay800"><a href="#section5"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-music"></i></a></div>
+				<div class="hidden delay600"><a href="#section3"><i class="fa-solid fa-arrow-up arrow"></i></a></div>
+				<div class="hidden delay400"><a href="#section6"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-terminal"></i></a></div>
+			</div>
+
+			<h1>Biblioteka Steam</h1>
+
+			<div class="hidden delay100">
+				<a href="https://steamcommunity.com/id/Kazmir_BO/"><i style="font-size: 3em;" class="fa-brands fa-steam"></i></a>
+			</div>
+
+			<h1 class="hidden delay200">Wideo z gier</h1>
+
+			<div class="videos">
+				<div class="hidden video">
+					<a href="./video/Blizzard.mp4" target="_blank">
+						<video muted autoplay loop><source src="./video/Blizzard_Mini.mp4" type="video/mp4"></video>
+					</a>
+				</div>
+
+				<div class="hidden video">
+					<a href="./video/In_Essense.mp4" target="_blank">
+						<video muted autoplay loop><source src="./video/In_Essense_Mini.mp4" type="video/mp4"></video>
+					</a>
+				</div>
+
+				<div class="hidden video">
+					<a href="./video/Reminisce.mp4" target="_blank">
+						<video muted autoplay loop><source src="./video/Reminisce_Mini.mp4" type="video/mp4"></video>
+					</a>
+				</div>
+
+				<div class="hidden video">
+					<a href="./video/Engineer.mp4" target="_blank">
+						<video muted autoplay loop><source src="./video/Engineer_Mini.mp4" type="video/mp4"></video>
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="spacer layer4"></div>
+
+	<div class="violet">
+		<section class="hidden" id="section5">
+			<div style="display: flex;">
+				<div class="hidden delay800"><a href="#section4"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-gamepad"></i></a></div>
+				<div class="hidden delay600"><a href="#section3"><i class="fa-solid fa-arrow-up arrow"></i></a></div>
+				<div class="hidden delay400"><a href="#section6"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-terminal"></i></a></div>
+			</div>
+
+			<h1>Muzyka</h1>
+
+			<h3>Nie mam ulubionego gatunku, zespołu czy albumu,</h3>
+
+			<h5>ale jak miałbym coś podać to Phonk...</h5>
+		</section>
+	</div>
+
+	<div class="spacer layer5"></div>
+
+	<div class="green">
+		<section class="hidden" id="section6">
+			<div style="display: flex;">
+				<div class="hidden delay800"><a href="#section4"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-gamepad"></i></a></div>
+				<div class="hidden delay600"><a href="#section3"><i class="fa-solid fa-arrow-up arrow"></i></a></div>
+				<div class="hidden delay400"><a href="#section5"><i style="font-size: 2em; margin: 10vw;" class="fa-solid fa-music"></i></a></div>
+			</div>
+
+			<h1 class="hidden delay100">Dużo tłumaczyć nie muszę...</h1>
+
+			<h3 class="hidden delay200">Python i C++ górują</h3>
+		</section>
+	</div>
+
+	<div class="spacer layer6"></div>
+
+	<div class="black">
+		<section class="hidden" id="section7">
+			<div class="hidden delay800"><a href="#section1"><i style="font-size: 5em; margin: 10vw;" class="fa-solid fa-bars"></i></a></div>
+
+			<h1 class="hidden delay300">Autor: Sebastian Kolanowski</h1>
+			<h3 class="hidden delay100">aka Kazmir_BO</h3>
+			<h6 class="hidden delay100">I use Arch BTW...</h6>
+
+		</section>
+	</div>
+
+</body>
+
+</html>
