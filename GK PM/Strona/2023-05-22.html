@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Strona</title>
+    <meta http-equiv="refresh" content="3" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="600"
+      height="500"
+      style="border: 2px solid deepskyblue"
+    />
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      // ctx.beginPath();
+      // ctx.moveTo(0, 150);
+      // ctx.bezierCurveTo(200, 600, 300, -300, 500, 150);
+      // ctx.lineTo(0, 150);
+      // ctx.stroke();
+      // ctx.lineJoin = "round";
+      // ctx.lineWidth = 30;
+      // ctx.font = "24px Helvetica";
+      // ctx.fillText("Kliknij gdziekolwiek aby wyczyścić...", 175, 40);
+      // ctx.strokeRect(75, 100, 200, 200);
+      // ctx.fillRect(325, 100, 200, 200);
+      // ctx.canvas.onmousedown = function (e) {
+      //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // };
+      // var grd = ctx.createLinearGradient(0, 0, 0, 80);
+      // grd.addColorStop(0, "black");
+      // grd.addColorStop(0.25, "black");
+      // grd.addColorStop(0.5, "red");
+      // grd.addColorStop(0.75, "red");
+      // grd.addColorStop(1, "yellow");
+      // ctx.fillStyle = grd;
+      // ctx.fillRect(10, 10, 180, 80);
+      ctx.shadowOffsetX = 15;
+      ctx.shadowOffsetY = 15;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "blue";
+      ctx.fillStyle = "red";
+      ctx.font = "50px Arial";
+      ctx.fillText("To jest cień w Canvas...", 10, 120);
+    </script>
+  </body>
+</html>
