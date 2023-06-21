@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Strona</title>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="refresh" content="3" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <style>
+      p {
+        font-size: 44px;
+      }
+    </style>
+    <!-- <p id="demo"></p> -->
+    <!-- <button onclick="myStopFunction()">Stop</button> -->
+    <canvas
+      id="myCanvas"
+      width="640"
+      height="480"
+      style="border: 3px solid red"
+    ></canvas>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      ctx = canvas.getContext("2d");
+      x = 0;
+      ctx.fillStyle = "red";
+      var loop = function (now) {
+        requestAnimationFrame(loop);
+        x += 5;
+        x %=canvas.width;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(x, 240 - 32, 64, 64);
+      };
+      loop();
+    </script>
+  </body>
+</html>

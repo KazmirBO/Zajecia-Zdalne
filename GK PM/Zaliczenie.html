@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Zaliczenie - Kolanowski Sebastian</title>
+    <!-- <meta http-equiv="refresh" content="3" /> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link href="./css/style.css" rel="stylesheet" /> -->
+  </head>
+  <body>
+    <canvas id="myCanvas" height="500" width="500"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "blue";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      let chmura = 0;
+      let chmura2 = canvas.width * 0.3;
+      let statek = canvas.width * 0.5;
+      function drawShip() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "lightblue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height * (2 / 3));
+        ctx.fillStyle = "blue";
+        ctx.fillRect(
+          0,
+          canvas.height * (2 / 3),
+          canvas.width,
+          canvas.height - canvas.height * (2 / 3)
+        );
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.ellipse(chmura, 100, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(chmura + 50, 120, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(chmura + 70, 100, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        chmura += 1;
+        if (chmura > canvas.width + 50) {
+          chmura = -150;
+        }
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.ellipse(chmura2, 230, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(chmura2 + 50, 210, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(chmura2 + 70, 220, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(chmura2 - 40, 220, 50, 30, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        chmura2 += 0.8;
+        if (chmura2 > canvas.width + 100) {
+          chmura2 = -150;
+        }
+        ctx.fillStyle = "grey";
+        ctx.fillRect(statek, 320, 100, 25);
+        ctx.fillRect(statek + 45, 270, 10, 50);
+        ctx.beginPath();
+        ctx.moveTo(statek + 90, 320);
+        ctx.lineTo(statek + 120, 320);
+        ctx.lineTo(statek + 100, 345);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(statek + 45, 240);
+        ctx.lineTo(statek + 95, 275);
+        ctx.lineTo(statek + 45, 300);
+        ctx.closePath();
+        ctx.fill();
+        statek += 0.5;
+        if (statek > canvas.width + 20) {
+          statek = -120;
+        }
+      }
+      setInterval(drawShip, 10);
+    </script>
+  </body>
+</html>
